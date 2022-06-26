@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import Main from "./Components/layout/Main";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "./redux/auth/auth.actions";
+import { history } from "./helpers/history";
+import AuthVerify from "./common/AuthVerify";
+import users from "./pages/users";
+
+import "antd/dist/antd.min.css";
+import "./assets/styles/main.css";
+import "./assets/styles/responsive.css";
 
 function App() {
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+  const logOut = () => {
+    dispatch(logout());
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router history={history}>
+        {!isLoggedIn ? (
+          <Switch>
+            <Main>
+              <Redirect from="/" exact component={users} />
+            </Main>
+            {/* <Route path="/sign-up" exact component={SignUp} /> */}
+            <Route path="/login" exact component={users} />
+            <Redirect from="*" to="/sign-in" />
+          </Switch>
+        ) : (
+          <Switch>
+            <Main>
+              <Redirect from="*" to="/dashboard" />
+            </Main>
+          </Switch>
+        )}
+        <AuthVerify logOut={logOut} />
+      </Router>
     </div>
   );
 }
