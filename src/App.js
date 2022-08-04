@@ -10,7 +10,8 @@ import { logout } from "./redux/auth/auth.actions";
 import { history } from "./helpers/history";
 import Login from "./pages/login";
 import AuthVerify from "./common/AuthVerify";
-import users from "./pages/users";
+import UserList from "./pages/userList";
+import Course from './pages/course/Course'
 
 import "antd/dist/antd.min.css";
 import "./assets/styles/main.css";
@@ -35,8 +36,8 @@ function App() {
         ) : (
           <Switch>
             <Main>
-              <Route path="/users" exact component={users} />
-              <Redirect from="*" to="/dashboard" />
+              <Route path="/users" exact component={UserList} />
+              <Route path="/courses" exact component={Course} />
             </Main>
           </Switch>
         )}

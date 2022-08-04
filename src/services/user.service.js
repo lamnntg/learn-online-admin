@@ -54,6 +54,25 @@ const submitInvite = (data) => {
   });
 };
 
+
+const getAllUser = () => {
+  return axios.get(`${API_ROOT}/admin/user/all`, {
+    headers: authHeader(),
+  });
+};
+
+const updateRoles = (data) => {
+  return axios.post(`${API_ROOT}/admin/user/update-roles`, data, {
+    headers: authHeader(),
+  });
+}
+
+const deleteUser = (id) => {
+  return axios.post(`${API_ROOT}/admin/user/delete`, {id: id}, {
+    headers: authHeader(),
+  });
+}
+
 export const userService = {
   getPublicContent,
   getUserBoard,
@@ -64,4 +83,7 @@ export const userService = {
   getUserById,
   getClassroomInvite,
   submitInvite,
+  getAllUser,
+  updateRoles,
+  deleteUser
 };

@@ -3,10 +3,11 @@ import { Menu } from 'antd';
 import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import {
-  VideoCameraOutlined,
+  MoreOutlined,
   UserOutlined,
   DashboardOutlined,
   BookOutlined,
+  SnippetsOutlined
 } from '@ant-design/icons';
 
 function Sidenav({ color }) {
@@ -48,6 +49,20 @@ function Sidenav({ color }) {
             <span className="label">Nguời dùng</span>
           </NavLink>
         </Menu.Item>
+        
+        <Menu.Item key="courses" style={{ marginBottom: '10px' }}>
+          <NavLink to="/courses">
+            <span
+              className="icon"
+              style={{
+                background: page === 'courses' ? color : ''
+              }}>
+              {<SnippetsOutlined />}
+            </span>
+            <span className="label">Khóa học</span>
+          </NavLink>
+        </Menu.Item>
+
         <Menu.Item key="classroom" style={{ marginBottom: '10px' }}>
           <NavLink to="/classroom">
             <span
@@ -60,24 +75,13 @@ function Sidenav({ color }) {
             <span className="label">Lớp học</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="courses" style={{ marginBottom: '10px' }}>
-          <NavLink to="/courses">
-            <span
-              className="icon"
-              style={{
-                background: page === 'courses' ? color : ''
-              }}>
-              {<UserOutlined />}
-            </span>
-            <span className="label">Khóa học</span>
-          </NavLink>
-        </Menu.Item>
+        
         <Menu.Item className="menu-item-header" key="5" style={{ marginBottom: '10px' }}>
           Khác
         </Menu.Item>
         <Menu.Item key="meeting1" style={{ marginBottom: '10px' }}>
           <NavLink to="/meeting">
-            <span className="icon">{<VideoCameraOutlined />}</span>
+            <span className="icon">{<MoreOutlined />}</span>
             <span className="label">Khác</span>
           </NavLink>
         </Menu.Item>
