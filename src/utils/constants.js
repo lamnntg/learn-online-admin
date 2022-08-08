@@ -1,5 +1,5 @@
-export const API_URL = 'http://localhost:8080/api/auth/';
-export const API_ROOT = 'http://localhost:8080/api';
+export const API_URL = 'https://learn-online-app.herokuapp.com/api/auth/';
+export const API_ROOT = 'https://learn-online-app.herokuapp.com/api';
 export const CONVERT_API_SECRET_KEY = '4klYVXNzKFvYWito';
 export const API_SOCKET_URL = '';
 
